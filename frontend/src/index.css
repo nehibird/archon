@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* OpenCode-inspired design tokens */
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+
+  /* Dark theme by default (OpenCode style) */
+  --radius: 0.5rem;
+
+  --surface-base: #0f0f0f;
+  --surface-raised: #1a1a1a;
+  --surface-float: #242424;
+  --surface-overlay: #2a2a2a;
+
+  --text-strong: #e5e5e5;
+  --text-base: #a3a3a3;
+  --text-weak: #666666;
+
+  --border-weak: #222222;
+  --border-base: #333333;
+  --border-focus: #555555;
+
+  --accent-primary: #3b82f6;
+  --accent-success: #22c55e;
+  --accent-warning: #eab308;
+  --accent-error: #ef4444;
+
+  /* Map to Tailwind/shadcn tokens */
+  --background: var(--surface-base);
+  --foreground: var(--text-strong);
+  --card: var(--surface-raised);
+  --card-foreground: var(--text-strong);
+  --popover: var(--surface-float);
+  --popover-foreground: var(--text-strong);
+  --primary: var(--accent-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-raised);
+  --secondary-foreground: var(--text-base);
+  --muted: var(--surface-raised);
+  --muted-foreground: var(--text-weak);
+  --accent: var(--surface-overlay);
+  --accent-foreground: var(--text-strong);
+  --destructive: var(--accent-error);
+  --border: var(--border-weak);
+  --input: var(--border-base);
+  --ring: var(--accent-primary);
+
+  /* Sidebar */
+  --sidebar: #111111;
+  --sidebar-foreground: var(--text-base);
+  --sidebar-primary: var(--accent-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--surface-raised);
+  --sidebar-accent-foreground: var(--text-strong);
+  --sidebar-border: var(--border-weak);
+  --sidebar-ring: var(--accent-primary);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background-color: var(--surface-base);
+    color: var(--text-strong);
+    font-family: var(--font-sans);
+  }
+}
+
+/* Scrollbar styling (thin, dark) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-base);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-weak);
+}
+
+/* Gradient fade for prompt dock */
+.prompt-dock-fade {
+  background: linear-gradient(to bottom, transparent, var(--surface-base) 50%);
+}
